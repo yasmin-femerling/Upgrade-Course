@@ -1,0 +1,13 @@
+{
+    "cols": [
+          {"id":"","label":"Language","pattern":"","type":"string"},
+          {"id":"","label":"Coders","pattern":"","type":"number"}
+        ],
+    "rows": [
+          {"c":[{"v":"Java","f":null},{"v":3,"f":null}]},
+          {"c":[{"v":"C++","f":null},{"v":1,"f":null}]},
+          {"c":[{"v":"C#","f":null},{"v":1,"f":null}]},
+          {"c":[{"v":"Javascript","f":null},{"v":1,"f":null}]},
+          {"c":[{"v":"Python","f":null},{"v":2,"f":null}]}
+        ]
+  }

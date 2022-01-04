@@ -16,14 +16,16 @@
     // draws it.
     function drawChart() {
     // Create the data table.
-    let query = new google.visualization.Query(this.getAttribute('data-source'));
-    console.log(query)
-    let response = query.send();
-    console.log( query.send())
-    let data = response.getDataTable();
+    var jsonData = $.ajax({
+      url:this.getAttribute('data-source'),
+      dataType: "json",
+      async: false
+      }).responseText;
 
+  // Create our data table out of JSON data loaded from server.
+  var data = new google.visualization.DataTable(jsonData);
     // Set chart options
-    var options = {'title':'Google Chart '+this.getAttribute('type'),
+    var options = {'title':this.getAttribute('title'),
                     'width':400,
                     'height':300};
 
@@ -61,7 +63,12 @@
     </script>
 </head>
 <body>
-    <google-chart type="bar" data-source="https://docs.google.com/spreadsheets/d/1kzwcVEDGTxJ8hmtcTy1IbeAn9raiOQ08A3wJSjYgBnc/edit?usp=sharing"></google-chart>
-    <google-chart type="bar" data-source="https://docs.google.com/spreadsheets/d/1kzwcVEDGTxJ8hmtcTy1IbeAn9raiOQ08A3wJSjYgBnc/edit?usp=sharing"></google-chart>
+    <h1>Custom Element - Google Charts</h1>
+    <h3>Using JSON Data Source</h3>
+
+    <h5>Pie Chart</h5>
+    <google-chart type="pie" data-source="data.json" title="Pie Chart of Atos Coders"></google-chart>
+    <h5>Column Chart</h5>
+    <google-chart type="column" data-source="data.json" title="Column Chart of Atos Coder"></google-chart>
 </body>
 </html>
