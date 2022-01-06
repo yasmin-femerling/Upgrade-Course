@@ -1,5 +1,3 @@
-
-
 // Callback that creates and populates a data table, 
 // instantiates the chart, passes in the data and
 // draws it.
