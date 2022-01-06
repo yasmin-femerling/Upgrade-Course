@@ -1,0 +1,274 @@
+{
+  "version": 1,
+  "projects": {
+    "models": {
+      "root": "libs/models",
+      "sourceRoot": "libs/models/src",
+      "projectType": "library",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
+          "options": {
+            "lintFilePatterns": ["libs/models/**/*.ts"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/models"],
+          "options": {
+            "jestConfig": "libs/models/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "tags": []
+    },
+    "my-angular-app": {
+      "projectType": "application",
+      "root": "apps/my-angular-app",
+      "sourceRoot": "apps/my-angular-app/src",
+      "prefix": "trucos-type-script",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "outputs": ["{options.outputPath}"],
+          "options": {
+            "outputPath": "dist/apps/my-angular-app",
+            "index": "apps/my-angular-app/src/index.html",
+            "main": "apps/my-angular-app/src/main.ts",
+            "polyfills": "apps/my-angular-app/src/polyfills.ts",
+            "tsConfig": "apps/my-angular-app/tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              "apps/my-angular-app/src/favicon.ico",
+              "apps/my-angular-app/src/assets"
+            ],
+            "styles": ["apps/my-angular-app/src/styles.scss"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kb",
+                  "maximumError": "1mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "2kb",
+                  "maximumError": "4kb"
+                }
+              ],
+              "fileReplacements": [
+                {
+                  "replace": "apps/my-angular-app/src/environments/environment.ts",
+                  "with": "apps/my-angular-app/src/environments/environment.prod.ts"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "buildOptimizer": false,
+              "optimization": false,
+              "vendorChunk": true,
+              "extractLicenses": false,
+              "sourceMap": true,
+              "namedChunks": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "configurations": {
+            "production": {
+              "browserTarget": "my-angular-app:build:production"
+            },
+            "development": {
+              "browserTarget": "my-angular-app:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "my-angular-app:build"
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "options": {
+            "lintFilePatterns": [
+              "apps/my-angular-app/src/**/*.ts",
+              "apps/my-angular-app/src/**/*.html"
+            ]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/my-angular-app"],
+          "options": {
+            "jestConfig": "apps/my-angular-app/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "tags": []
+    },
+    "my-angular-app-e2e": {
+      "root": "apps/my-angular-app-e2e",
+      "sourceRoot": "apps/my-angular-app-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/my-angular-app-e2e/cypress.json",
+            "devServerTarget": "my-angular-app:serve:development"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "my-angular-app:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
+          "options": {
+            "lintFilePatterns": ["apps/my-angular-app-e2e/**/*.{js,ts}"]
+          }
+        }
+      },
+      "tags": [],
+      "implicitDependencies": ["my-angular-app"]
+    },
+    "my-react-app": {
+      "root": "apps/my-react-app",
+      "sourceRoot": "apps/my-react-app/src",
+      "projectType": "application",
+      "architect": {
+        "build": {
+          "builder": "@nrwl/web:webpack",
+          "outputs": ["{options.outputPath}"],
+          "defaultConfiguration": "production",
+          "options": {
+            "compiler": "babel",
+            "outputPath": "dist/apps/my-react-app",
+            "index": "apps/my-react-app/src/index.html",
+            "baseHref": "/",
+            "main": "apps/my-react-app/src/main.tsx",
+            "polyfills": "apps/my-react-app/src/polyfills.ts",
+            "tsConfig": "apps/my-react-app/tsconfig.app.json",
+            "assets": [
+              "apps/my-react-app/src/favicon.ico",
+              "apps/my-react-app/src/assets"
+            ],
+            "styles": ["apps/my-react-app/src/styles.scss"],
+            "scripts": [],
+            "webpackConfig": "@nrwl/react/plugins/webpack"
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/my-react-app/src/environments/environment.ts",
+                  "with": "apps/my-react-app/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false
+            }
+          }
+        },
+        "serve": {
+          "builder": "@nrwl/web:dev-server",
+          "options": {
+            "buildTarget": "my-react-app:build",
+            "hmr": true
+          },
+          "configurations": {
+            "production": {
+              "buildTarget": "my-react-app:build:production",
+              "hmr": false
+            }
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
+          "options": {
+            "lintFilePatterns": ["apps/my-react-app/**/*.{ts,tsx,js,jsx}"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/apps/my-react-app"],
+          "options": {
+            "jestConfig": "apps/my-react-app/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "tags": []
+    },
+    "my-react-app-e2e": {
+      "root": "apps/my-react-app-e2e",
+      "sourceRoot": "apps/my-react-app-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/my-react-app-e2e/cypress.json",
+            "devServerTarget": "my-react-app:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "my-react-app:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
+          "options": {
+            "lintFilePatterns": ["apps/my-react-app-e2e/**/*.{js,ts}"]
+          }
+        }
+      },
+      "tags": [],
+      "implicitDependencies": ["my-react-app"]
+    },
+    "utils": {
+      "root": "libs/utils",
+      "sourceRoot": "libs/utils/src",
+      "projectType": "library",
+      "architect": {
+        "lint": {
+          "builder": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
+          "options": {
+            "lintFilePatterns": ["libs/utils/**/*.ts"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "outputs": ["coverage/libs/utils"],
+          "options": {
+            "jestConfig": "libs/utils/jest.config.js",
+            "passWithNoTests": true
+          }
+        }
+      },
+      "tags": []
+    }
+  }
+}

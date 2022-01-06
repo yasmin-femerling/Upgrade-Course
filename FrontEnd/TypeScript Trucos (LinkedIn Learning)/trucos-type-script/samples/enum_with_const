@@ -1,0 +1,4 @@
+var log = {
+    user: 'yasmin',
+    lastMove: 3 /* Right */
+};
