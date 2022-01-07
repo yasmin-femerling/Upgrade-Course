@@ -1,0 +1,100 @@
+npm -v : version
+
+package.json : manifest file with app info
+-lists dependencies
+-version
+-creates npm scripts
+-easily crete npm init
+
+npm init --yes : add package.json with all defaults
+
+npm config set init -author-name "Yasmin":
+change default values
+
+npm set init-license "MIT":
+change values
+
+npm config delete init-author-nam: 
+delete values and puts them in default
+
+npm install lodash --save : adds dependency and
+saves it to pacakge.json
+as a dependency (include --save to save it there)
+
+node index.js : run the app from index.js
+
+!! When sharing your app DONT include the node
+modules, only put them in dependencies !!
+
+after sharing:
+npm install : installs necessary dependencies
+
+*dev dependencies - needed
+for development but not published
+
+npm install gulp gulp-sass --save-dev:
+installed two dependencies in dev
+may exclude them when not needed
+
+npm install --production: excludes
+dev dependencies
+
+npm uninstall gulp-sass --save-dev:
+uninstalls the package
+
+npm remove gulp --save-dev:
+removes the package
+
+nrpm rm lodash --save: 
+also removes the package
+
+npm install lodash@4.17.3 --save:
+installs the specific version
+
+npm update lodash:
+updates to latest version
+
+!! Versions:
+8.2.6
+* major version: major changes,
+breaks the API
+* minor version: new features, 
+doesnt break API
+*patch: debug
+
+lodash:"^4.17.4" -- install the latest minor version
+                    ex: 4.18, not 5.0
+lodash:"~4.17.4" -- install the latest patch version    
+                    ex: 4.17.5, not 4.18
+lodash:"4.17.4"  -- install this version
+lodash:"*"       -- install the latest version
+                    ex: 5.0
+
+** Global modules:
+    local modules go in node_modules
+    global modules are installe globally,
+    can run it anywhere
+
+npm install -g nodemon: installs it globally
+
+npm root -g : shows where global modules are installed
+
+npm remove (or rm) -g nodemon
+
+npm list : lists dependencies
+
+npm list -depth:0
+
+"scripts": {
+    "start": "node index.js"
+  }
+  => use npm start to run instead of
+  node index
+
+  you can add other, but must use run
+  if they are not keywords
+  "scripts": {
+    "server": "live-server"
+  }
+
+  npm run server
