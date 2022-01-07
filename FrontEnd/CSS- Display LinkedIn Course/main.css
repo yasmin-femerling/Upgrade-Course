@@ -1,0 +1,139 @@
+
+/*Inline elements properties:
+They are as wide as their content
+Padding can be put on 4 sides and is overlay, doesnt push elements away
+Margins can only be put on left and  right*/
+
+p{
+    border: 3px solid black;
+}
+
+p*{
+    border: 3px dotted green;
+}
+
+strong{
+    background-color:yellow;
+    padding:1rem;
+}
+
+em{
+    background-color: pink;
+    margin: 1rem;
+}
+
+/*Block element
+/*section, artile, paragraphs, tables, list, div
+vertical margins collapse
+wide as containing elements
+width constrain them
+heigth is determined by the height of the content
+*/
+
+h1{
+    border: 3px solid red;
+}
+
+body{
+    border: 3px solid red;
+    width:300px;
+}
+
+section{
+    border:3px dashed blue;
+}
+
+p{
+    border: 3px solid black;
+    margin: 3rem;
+
+}
+
+/* LEGAL:
+block inside block
+inline elements in block
+inline inside inline elements
+*/
+/*ILLEGAL:
+block in inline elements
+example: anchor tag wrapping block elements
+*/
+
+/* Display none removes the space it occupied
+Visibility hidden keeps the space but makes the content invisible*/
+
+strong{
+    display:none;
+}
+
+em{
+    visibility:hidden;
+}
+/* Display does not inherit its values*/
+/* GRID, flex: parent has property but children receive it*/
+
+/*Flex: element stetches width, block behaviour of flex*/
+
+/*Inline-flex: element is as wide as the content, inline behaviour of flex*/
+
+.row{
+    display:flex;
+    border: 2px solid red;
+}
+
+.box{
+    border: 2px dotted blue;
+    flex-basis:20%;
+}
+
+/* Float moves elements to left or right
+overflow-root: generates a block container box, and lays out its contents
+ using flow layout. It always establishes a new block formatting context 
+ for its contents
+*/
+section{
+    border: 2px solid red;
+    background-color: teal;
+    display: flow-root;
+}
+img{
+    float:left;
+}
+
+/* Example of uses of display settings
+*/
+ul{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+li{
+    border: 2 px solid blue;
+    display: inline-block; /* allows us to have margin all around
+                            but keeping it block*/
+    margin: 0.5 rem;
+}
+a{
+    background-color: #fcc;
+    color:#600;
+    padding: 0.5 rem;
+    display: block; /*expand it to fill the are in which it is contained*/
+    padding: 0.5rem;
+}
+a:hover{
+    background-color: #600;
+    color:#fcc;
+}
+
+/*HTML Tables*/
+/* display: table - block table (fill its element)
+/* inline-table - inline table (as wide as the content)
+*/
+
+/*List items*/
+/*AVOID, try to use lists*/
+
+.list{
+    display: list-item;
+    list-style-position: inside;
+}
