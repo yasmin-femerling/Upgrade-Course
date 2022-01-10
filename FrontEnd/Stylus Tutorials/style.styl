@@ -1,0 +1,47 @@
+@import 'nib'
+@import 'typographic'
+@import 'styl/*'
+
+//reset-html5() //nib
+//normalize-html5() //nib
+//nomralize-base() //nib
+
+//t-presets(1) //typographic
+
+add(a,b,c=4) 
+    a+b+c
+
+marg(a,b) 
+    return a a*10 a*b
+
+rupture.scale = 0 400px 600px 800px 1050px 1800px;
+rupture.scale-names = 'peque' 's' 'm' 'l' 'xl' 'hd';
+ 
+t-headers(futura) //typographic ??? deprecated???
+body
+    background linear-gradient(top, white,black)
+    color red
+    fixed top 20px left //nib absolute, relative
+    border solid 1px @color //goes up the chain ana looks for the first color
+    margin-left add(1rem,2)
+    font-family futura
+    +at(2)
+        color red  //rupture between area
+    +below('peque') //rupture max-width
+        color blue  
+        main  
+            color blue  
+    main 
+        margin marg(10px,20)
+        border solid 1px @color
+        transition(all 0.2s ease)
+        background:  tint(blue,10%) //grayscale(), tint(), rga(), invert(), complement()
+        color blue
+        border-radius 35px
+        test(5)
+        clearfix() //nib
+        a   
+            overflow ellipsis //nib
+            shadow-stroke(blue) //nib
+
+

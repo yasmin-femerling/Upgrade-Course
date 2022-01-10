@@ -1,0 +1,55 @@
+body {
+  background: linear-gradient(top, #fff, #000);
+  -webkit-background: linear-gradient(top, #fff, #000);
+  -moz-background: linear-gradient(top, #fff, #000);
+  color: #be2525;
+  position: fixed;
+  top: 20px;
+  left: 0;
+  border: solid 1px #be2525;
+  margin-left: 7rem;
+  font-family: futura;
+}
+@media only screen and (min-width: 400px) and (max-width: 600px) {
+  body {
+    color: #be2525;
+  }
+}
+@media only screen and (max-width: 400px) {
+  body {
+    color: #475cd1;
+  }
+  body main {
+    color: #475cd1;
+  }
+}
+body main {
+  margin: 10px 100px 200px;
+  border: solid 1px #be2525;
+  transition: all 0.2s ease;
+  -webkit-transition: all 0.2s ease;
+  -moz-transition: all 0.2s ease;
+  background: #596cd5;
+  color: #475cd1;
+  border-radius: 35px;
+  -webkit-border-radius: 35px;
+  -moz-border-radius: 35px;
+  margin-top: 5px;
+  zoom: 1;
+}
+body main:before,
+body main:after {
+  content: "";
+  display: table;
+}
+body main:after {
+  clear: both;
+}
+body main a {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-text-overflow: ellipsis;
+  -moz-text-overflow: ellipsis;
+  text-shadow: -1px -1px 0 #475cd1, 1px -1px 0 #475cd1, -1px 1px 0 #475cd1, 1px 1px 0 #475cd1;
+}
