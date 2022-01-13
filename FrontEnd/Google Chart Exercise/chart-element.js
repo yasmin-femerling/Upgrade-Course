@@ -1,3 +1,19 @@
+"use strict";
+var __extends = (this && this.__extends) || (function () {
+    var extendStatics = function (d, b) {
+        extendStatics = Object.setPrototypeOf ||
+            ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
+            function (d, b) { for (var p in b) if (Object.prototype.hasOwnProperty.call(b, p)) d[p] = b[p]; };
+        return extendStatics(d, b);
+    };
+    return function (d, b) {
+        if (typeof b !== "function" && b !== null)
+            throw new TypeError("Class extends value " + String(b) + " is not a constructor or null");
+        extendStatics(d, b);
+        function __() { this.constructor = d; }
+        d.prototype = b === null ? Object.create(b) : (__.prototype = b.prototype, new __());
+    };
+})();
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -34,32 +50,54 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-function manageData() {
+exports.__esModule = true;
+var data_fetch_1 = require("./data-fetch");
+var data_process_1 = require("./data-process");
+var google;
+function getData(source, property) {
     return __awaiter(this, void 0, void 0, function () {
-        var jsonResponse;
+        var jsonReponse, data;
         return __generator(this, function (_a) {
             switch (_a.label) {
-                case 0: return [4 /*yield*/, getRemoteData('https://randomuser.me/api?results=100')];
+                case 0: return [4 /*yield*/, (0, data_fetch_1.fetchData)(source)];
                 case 1:
-                    jsonResponse = _a.sent();
-                    return [2 /*return*/, mapData(jsonResponse, 'gender')];
+                    jsonReponse = _a.sent();
+                    data = (0, data_process_1.processData)(jsonReponse, property, google);
+                    console.log(data);
+                    return [2 /*return*/];
             }
         });
     });
 }
-function getRemoteData(url) {
-    return __awaiter(this, void 0, void 0, function () {
-        var response, body;
-        return __generator(this, function (_a) {
-            switch (_a.label) {
-                case 0: return [4 /*yield*/, fetch(url)];
-                case 1:
-                    response = _a.sent();
-                    return [4 /*yield*/, response.json()];
-                case 2:
-                    body = _a.sent();
-                    return [2 /*return*/, body.results];
-            }
-        });
-    });
+function drawChart() {
+    var type = this.getAttribute('type');
+    var title = this.getAttribute('title');
+    var property = this.getAttribute('property');
+    var url = 'https://randomuser.me/api?results=100';
+    var data = getData(url, property);
+    var options = { 'title': title };
+    switch (type) {
+        case 'column':
+            var chart = new google.visualization.ColumnChart(this);
+            break;
+        default:
+            var chart = new google.visualization.PieChart(this);
+    }
+    chart.draw(data, options);
 }
+var GoogleChart = /** @class */ (function (_super) {
+    __extends(GoogleChart, _super);
+    function GoogleChart() {
+        return _super !== null && _super.apply(this, arguments) || this;
+    }
+    GoogleChart.prototype.connectedCallback = function () {
+        console.log('Adding a chart!');
+        drawChart.call(this);
+    };
+    return GoogleChart;
+}(HTMLElement));
+google.charts.load('current', { packages: ['corechart'] });
+google.charts.setOnLoadCallback(function () {
+    console.log('Google Charts loaded.');
+    customElements.define('google-chart', GoogleChart);
+});
