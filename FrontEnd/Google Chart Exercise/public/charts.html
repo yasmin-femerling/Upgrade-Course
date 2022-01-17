@@ -6,8 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Google Chart Custom Element</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <!--Load the AJAX API-->
-    <script src="https://www.gstatic.com/charts/loader.js"></script>
     <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 </head>
 <body>
@@ -16,11 +14,10 @@
     <h3>Using JSON Data Source</h3>
 
     <h5>Pie Chart</h5>
-    <google-chart type="pie" data-source="data.json" title="Pie Chart of Atos Coders" property="gender"></google-chart>
-    <h5>Column Chart</h5>
-    <google-chart type="column" data-source="data1.json" title="Column Chart Stock of Products" property="gender"></google-chart>
+   <google-chart type="pie" data-source="https://randomuser.me/api?results=100" title="Pie Chart of Atos Coders" property="gender"></google-chart>
+   <h5>Column Chart</h5>
+    <google-chart type="column" data-source="https://jsonplaceholder.typicode.com/todos" title="Column Chart Stock of Products" property="completed"></google-chart>
 </div>
-<script>var exports = {};</script>
-<script src="chart-element.js"></script>
+<script src="./bundle.js"></script>
 </body>
 </html>

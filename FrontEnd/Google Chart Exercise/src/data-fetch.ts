@@ -6,5 +6,5 @@ export async function fetchData(url:string){
 async function getRemoteData(url: string) {
     const response = await fetch(url);
     const body = await response.json();
-    return body.results;
+    return body.results?body.results:body;
 }

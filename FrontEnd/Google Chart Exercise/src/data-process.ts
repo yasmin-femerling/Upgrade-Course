@@ -1,26 +1,27 @@
-export function processData(jsonResponse:string[], property:string, google){
+import {GoogleCharts} from 'google-charts';
+
+export function processData(jsonResponse:string[], property:string){
    let map = mapData(jsonResponse,property);
-   return mapToData(map, property,google);
+   return mapToData(map, property);
 }
 
 function mapData(jsonResponse:string[], property: string): Map<string,number>{
     let map: Map<string,number> = new Map();
     jsonResponse.forEach(element => {
-        if(element[property]){
+        if(element[property] != null){
             if(map.has(element[property])){
-                map.set(element[property], map.get(element[property])! + 1);
+                map.set(String(element[property]), map.get(element[property])! + 1);
             } else{
-                map.set(element[property],1);
+                map.set(String(element[property]),1);
             }
         }
     });
-    console.log(map)
     return map;
 }
 
-function mapToData(map:Map<string,number>, property:string, google){
+function mapToData(map:Map<string,number>, property:string){
     let array: [string,number|string][] = [[property, 'Count']];
     map.forEach((value:number, key:string) => array.push([key,value]));
-    var data = google.visualization.arrayToDataTable(array);
+    var data = GoogleCharts.api.visualization.arrayToDataTable(array);
     return data;
 }
