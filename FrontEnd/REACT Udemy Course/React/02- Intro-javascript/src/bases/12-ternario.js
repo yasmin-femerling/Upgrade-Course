@@ -11,11 +11,11 @@ const activo = true;
 // }
 // const mensaje = ( activo ) ? 'Activo' : 'Inactivo'; 
 // const mensaje = ( activo ) ? 'Activo' : null; 
+
+// el && si es true regresa lo demas
 const mensaje = activo && 'Activo';
 
 
 console.log(mensaje);
-
-
 
 
