@@ -1,11 +1,6 @@
 *package-lock.json
-*package-lock.json
-FrontEnd/NPM Crash Course/appNoDevDep/node_modules/*
-FrontEnd/NPM Crash Course/sharedapp/node_modules/*
-FrontEnd/NPM Crash Course/npmapp/node_modules/*
-FrontEnd/Stylus Tutorials/node_modules/*
-FrontEnd/Test Driven Development LinkedIn Course/tdd-es6/node_modules/*
-FrontEnd/Test Driven Development LinkedIn Course/tdd-server/node_modules/*
-FrontEnd/Test Driven Development LinkedIn Course/tdd-server/coverage/*
-FrontEnd/Test Driven Development LinkedIn Course/tdd-server/.nyc_output/*
-FrontEnd/Github LinkedIn Course/
+node_modules/
+coverage/
+.nyc_output/
+Github LinkedIn Course/
+/Feyman

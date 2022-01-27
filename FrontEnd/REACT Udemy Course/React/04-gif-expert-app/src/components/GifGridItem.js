@@ -1,4 +1,5 @@
-import React from 'react'
+import PropTypes from 'prop-types';
+import React from 'react';
 
 export const GifGridItem = ({ title, url }) => {
 
@@ -9,3 +10,16 @@ export const GifGridItem = ({ title, url }) => {
         </div>
     )
 }
+
+/* tarea prueba
+mostrar componente correctamente
+    * shallow
+    *wrapper
+    * wrapper .tomatchsnapshot()
+*/
+
+
+GifGridItem.propTypes = {
+    title: PropTypes.string.isRequired,
+    url: PropTypes.string.isRequired,
+};
