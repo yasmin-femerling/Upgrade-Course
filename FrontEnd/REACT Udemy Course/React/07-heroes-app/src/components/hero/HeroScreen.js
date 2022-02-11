@@ -1,6 +1,8 @@
 import React, { useMemo } from 'react';
 import { useParams, Navigate, useNavigate } from 'react-router-dom';
 import { getHeroesById } from '../../selectors/getHeroById';
+// import batman  from '../../assets/dc-batman.jpg'; for static resources
+const heroImages = require.context('../../assets', true)
 
 export const HeroScreen = () => {
 
@@ -35,7 +37,9 @@ export const HeroScreen = () => {
       <div className="row mt-5">
           <div className="col-4">
               <img 
-                  src={ imagePath } 
+                  //src={ imagePath } //desde un path
+                  //src={ batman } //ahora desde import estatico
+                  src={ heroImages(`./${heroeId}.jpg`) } //ahora con require
                   alt={ superhero }
                   className="img-thumbnail animate__animated animate__fadeInLeft"
               />
